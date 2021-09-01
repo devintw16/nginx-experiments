@@ -1,17 +1,21 @@
 services: 
-  niginx_web_0:
+  nginx_web_0:
     image: nginx
     networks:
-      - nignx_network
-    ports:
-      - 8080:80
-  niginx_web_1:
+      - nginx_network
+  nginx_web_1:
     image: nginx
     networks:
-      - nignx_network
+      - nginx_network
+  nginx_reverse_proxy:
+    image: nginx
+    networks:
+      - nginx_network
     ports:
-      - 8082:80
+      - 80:80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d/
 
 networks:
-  nignx_network:
+  nginx_network:
     driver: bridge
