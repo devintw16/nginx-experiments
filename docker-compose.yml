@@ -1,0 +1,17 @@
+services: 
+  niginx_web_0:
+    image: nginx
+    networks:
+      - nignx_network
+    ports:
+      - 8080:80
+  niginx_web_1:
+    image: nginx
+    networks:
+      - nignx_network
+    ports:
+      - 8082:80
+
+networks:
+  nignx_network:
+    driver: bridge
